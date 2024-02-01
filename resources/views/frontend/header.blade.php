@@ -92,7 +92,7 @@
                     </li>
 
                     <li class="menu-item-has-children">
-                        <a href="{{ route('program') }}">Gallery</a>
+                        <a href="{{ route('gallery') }}">Gallery</a>
                     </li>
 
                     <li class="menu-item-has-children">

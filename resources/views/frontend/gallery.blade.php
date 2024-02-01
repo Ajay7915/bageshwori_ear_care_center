@@ -42,14 +42,7 @@
                     @endforeach
                 @endforeach
 
-                {{-- <div class="col-md-3 col-lg-3 filter-item cat-2">
-                    <div class="vs-project-box mb-30">
-                        <div class="project-img">
-                            <a href="#"><img src="assets/img/project/pro-1-6.jpg" alt="Project Image"
-                                    class="w-100"></a>
-                        </div>
-                    </div>
-                </div> --}}
+                
 
 
 

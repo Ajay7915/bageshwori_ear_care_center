@@ -28,12 +28,13 @@
                         <div class="vs-widget-about text-white">
                             <p>
                                 @isset($about->description)
-                                    {!! $about->description !!}
+                                    {!! Str::limit($about->description, 150) !!}
                                 @endisset
 
                             </p>
                             <h4><a class="text-theme hover-white" href="tel:693232512456"><i
-                                        class="fas fa-phone-volume me-2 pe-1"></i> @isset($about->contact_no)
+                                        class="fas fa-phone-volume me-2 pe-1"></i>
+                                    @isset($about->contact_no)
                                         {{ $about->contact_no }}
                                     @endisset
                                 </a></h4>
@@ -56,7 +57,7 @@
                             <ul class="menu">
                                 @isset($programs)
                                     @foreach ($programs as $service)
-                                        <li><a href="#">{{ Str::limit($service->title,20) }}</a></li>
+                                        <li><a href="#">{{ Str::limit($service->title, 20) }}</a></li>
                                     @endforeach
                                 @endisset
 
@@ -64,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-auto col-xl-auto">
                     <div class="widget footer-widget widget_nav_menu   ">
                         <h3 class="widget_title">Services</h3>
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-3 col-xl-3">
                     <div class="widget footer-widget   ">
                         <h3 class="widget_title">Visiting Hours</h3>
