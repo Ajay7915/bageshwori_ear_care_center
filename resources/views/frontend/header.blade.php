@@ -67,7 +67,9 @@
         <div class="vs-menu-area text-center">
             <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
-                <a href="{{ route('home') }}"><img src="documents/logo/{{$about->logo}}" alt="Medixi"></a>
+                @isset($about->logo)
+                    <a href="{{ route('home') }}"><img src="documents/logo/{{ $about->logo }}" alt="Medixi"></a>
+                @endisset
             </div>
             <form action="#" class="mobile-menu-form">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -83,7 +85,7 @@
                     </li>
                     <li class="menu-item-has-children">
                         <a href="{{ route('service') }}">Services</a>
-                       
+
                     </li>
                     <li class="menu-item-has-children">
                         <a href="{{ route('program') }}">Program</a>
@@ -92,11 +94,11 @@
                     <li class="menu-item-has-children">
                         <a href="{{ route('program') }}">Gallery</a>
                     </li>
-                    
+
                     <li class="menu-item-has-children">
                         <a href="{{ route('notice') }}">Notice</a>
                     </li>
-                    
+
                     <li>
                         <a href="{{ route('contact') }}">Contact Us</a>
                     </li>
@@ -111,7 +113,9 @@
             <div class="widget footer-widget  ">
                 <div class="vs-widget-about">
                     <div class="footer-logo">
-                        <img src="documents/logo/{{$about->logo}}" alt="logo">
+                        @isset($about->logo)
+                            <img src="documents/logo/{{ $about->logo }}" alt="logo">
+                        @endisset
                     </div>
                     <p class="footer-text1">Lorem ipsum dolor sit amet, consectet eiusmod tempor incididunt ut labore e
                         rem ipsum dolor sit amet. sum dolor sit amet, consectet eiusmod.</p>
@@ -229,7 +233,10 @@
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
                                 <div class="header1-logo py-2">
-                                    <a href="{{ route('home') }}"><img src="documents/logo/{{$about->logo}}" alt="Logo"></a>
+                                    @isset($about->logo)
+                                        <a href="{{ route('home') }}"><img src="documents/logo/{{ $about->logo }}"
+                                                alt="Logo"></a>
+                                    @endisset
                                 </div>
                             </div>
                             <div class="col text-end text-lg-center">
@@ -242,7 +249,7 @@
                                         <li> <a href="{{ route('about') }}">About</a> </li>
                                         <li>
                                             <a href="{{ route('service') }}">Services</a>
-                                         
+
                                         </li>
                                         <li>
                                             <a href="{{ route('program') }}">Programs</a>

@@ -52,7 +52,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
-                                        @foreach ($messages as $list)
+                                        @foreach ($contacts as $list)
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td class="badge badge-danger m-2 p-3">{{ $list->published_date }}</td>
