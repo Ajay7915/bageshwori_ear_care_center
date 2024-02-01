@@ -27,18 +27,24 @@
                         <div class="widget  ">
                             <h3 class="widget_title">Recent Notice</h3>
                             <div class="recent-post-wrap">
-                                @foreach ($notices as $notice)
-                                    <div class="thumb-post">
-                                        <div class="media-img">
-                                            <a href="{{route('notice_show',$notice->id)}}" target="_blank"><img src="/documents/logo/document_logo.png" height="50" width="50"
-                                                    alt="Blog Image"></a>
+                                @isset($notices)
+                                    @foreach ($notices as $notice)
+                                        <div class="thumb-post">
+                                            <div class="media-img">
+                                                <a href="{{ route('notice_show', $notice->id) }}" target="_blank"><img
+                                                        src="/documents/logo/document_logo.png" height="50" width="50"
+                                                        alt="Blog Image"></a>
+                                            </div>
+                                            <div class="media-body ">
+                                                <p class="post-title"><a href="{{ route('notice_show', $notice->id) }}"
+                                                        class="text-dark" target="_blank">{!! $notice->description !!}</a></p>
+                                                <a class="post-date" href="{{ route('notice_show', $notice->id) }}"
+                                                    target="_blank"><i class="fal fa-calendar-alt"></i>Posted date:
+                                                    {{ $notice->published_date }}</a>
+                                            </div>
                                         </div>
-                                        <div class="media-body ">
-                                            <p class="post-title"><a href="{{route('notice_show',$notice->id)}}" class="text-dark" target="_blank">{!!$notice->description!!}</a></p>
-                                            <a class="post-date" href="{{route('notice_show',$notice->id)}}" target="_blank"><i class="fal fa-calendar-alt"></i>Posted date: {{$notice->published_date}}</a>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @endisset
                             </div>
                         </div>
                     </aside>

@@ -163,19 +163,21 @@
                                         care.</span></h2>
                             </div>
                             <div class="col-xl-10">
-                                <p class="mb-4">Rapidiously evisculate user-centric functionalities for highly
-                                    efficient interfaces. Competently leverage other's scalable technology before
-                                    synergistic manufactured products.</p>
+                                <p class="mb-4">@isset($about->description)
+                                    {!!$about->description!!}
+                                @endisset</p>
                             </div>
                         </div>
                         <div class="media-style1">
                             <div class="media-icon"><i class="fas fa-phone"></i></div>
                             <div class="media-body">
                                 <h3 class="media-title">CALL ANYTIME 24/7</h3>
-                                <p class="media-text"><a href="tel:+4412345996">+44-1234-5996</a></p>
+                                <p class="media-text"><a href="tel:+977 9800000000">@isset($about->contact_no)
+                                    {{$about->contact_no}}
+                                @endisset</a></p>
                             </div>
                         </div>
-                        <a href="about.html" class="vs-btn">Learn More</a>
+                        <a href="{{route('about')}}" class="vs-btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -251,9 +253,9 @@
                             <div class="project-img">
                                 <img src="documents/programs/{{$program->image}}" alt="Project Image" width="387" height="400" class="w-100">
                             </div>
-                            <div class="project-content">
-                                <h4 class="project-name">{{$program->title}}</h4>
-                                <span class="project-cat fs-xs">{{$program->description}}></span>
+                            <div class="project-content rounded">
+                                <h4 class="project-name">{{Str::limit($program->title,20)}}</h4>
+                                <span class="project-cat fs-xs">{!!Str::limit($program->description,100)!!}</span>
                                 <a href="assets/img/project/pro-1-1.jpg" class="icon-btn style4 popup-image"><i
                                         class="fal fa-eye"></i></a>
                             </div>
@@ -302,8 +304,8 @@
             <div class="row  text-center justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-6 wow fadeIn" data-wow-delay="0.3s">
                     <div class="section-title">
-                        <span class="h3 text-theme sec-subtitle">Blog Posts</span>
-                        <h2 class="h1 ">Latest News</h2>
+                        <span class="h3 text-theme sec-subtitle">Service</span>
+                        <h2 class="h1 ">Latest Service</h2>
                         <p>Proactively revolutionize granular customer service after pandemic internal or "organic"
                             sources proactive human capital rather.</p>
                     </div>

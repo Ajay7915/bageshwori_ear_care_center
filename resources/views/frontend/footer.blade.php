@@ -25,17 +25,24 @@
                 <div class="col-md-6 col-lg-3 col-xl-3">
                     <div class="widget footer-widget  ">
                         <h3 class="widget_title">About Us</h3>
-                        <div class="vs-widget-about">
-                            <p>Energistically reintermediate worldwide interfaces vis-a-vis emerging integrate
-                                leadership skills.</p>
+                        <div class="vs-widget-about text-white">
+                            <p>
+                                @isset($about->description)
+                                    {!! $about->description !!}
+                                @endisset
+
+                            </p>
                             <h4><a class="text-theme hover-white" href="tel:693232512456"><i
-                                        class="fas fa-phone-volume me-2 pe-1"></i> 693 2325 12456</a></h4>
+                                        class="fas fa-phone-volume me-2 pe-1"></i> @isset($about->contact_no)
+                                        {{ $about->contact_no }}
+                                    @endisset
+                                </a></h4>
                             <div class="d-flex mt-3 pt-1">
                                 <div class="avater-small mr-20">
                                     <img src="assets/img/author/author-2-3.jpg" alt="Avater Image">
                                 </div>
                                 <div class="media-body align-self-center">
-                                    <h5 class="mb-0 font-body lh-1 text-white">Dr. David Smith</h5>
+                                    <h5 class="mb-0 font-body lh-1 text-white">Dr .................</h5>
                                     <span class="text-theme fs-xs lh-1">Senior Consultant</span>
                                 </div>
                             </div>
@@ -44,73 +51,60 @@
                 </div>
                 <div class="col-md-6 col-lg-auto col-xl-auto">
                     <div class="widget footer-widget widget_nav_menu   ">
-                        <h3 class="widget_title">Services</h3>
+                        <h3 class="widget_title">Programs</h3>
                         <div class="menu-all-pages-container">
                             <ul class="menu">
-                                <li><a href="#">Body Surgery</a></li>
-                                <li><a href="#">Major Operation</a></li>
-                                <li><a href="#">Child Care</a></li>
-                                <li><a href="#">Heart Surgery</a></li>
-                                <li><a href="#">Mental Health</a></li>
-                                <li><a href="#">Urgent Care</a></li>
+                                @isset($programs)
+                                    @foreach ($programs as $service)
+                                        <li><a href="#">{{ Str::limit($service->title,20) }}</a></li>
+                                    @endforeach
+                                @endisset
+
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 col-xl-auto">
-                    <div class="widget footer-widget  ">
-                        <h4 class="widget_title">Program Posts</h4>
-                        <div class="footer-gallery">
-                            <div class="gal-item">
-                                <a href="#"><img src="assets/img/widget/gal-1-1.jpg" alt="Gallery Image"
-                                        class="w-100"></a>
-                            </div>
-                            <div class="gal-item">
-                                <a href="#"><img src="assets/img/widget/gal-1-2.jpg" alt="Gallery Image"
-                                        class="w-100"></a>
-                            </div>
-                            <div class="gal-item">
-                                <a href="#"><img src="assets/img/widget/gal-1-3.jpg" alt="Gallery Image"
-                                        class="w-100"></a>
-                            </div>
-                            <div class="gal-item">
-                                <a href="#"><img src="assets/img/widget/gal-1-4.jpg" alt="Gallery Image"
-                                        class="w-100"></a>
-                            </div>
-                            <div class="gal-item">
-                                <a href="#"><img src="assets/img/widget/gal-1-5.jpg" alt="Gallery Image"
-                                        class="w-100"></a>
-                            </div>
-                            <div class="gal-item">
-                                <a href="#"><img src="assets/img/widget/gal-1-6.jpg" alt="Gallery Image"
-                                        class="w-100"></a>
-                            </div>
+                
+                <div class="col-md-6 col-lg-auto col-xl-auto">
+                    <div class="widget footer-widget widget_nav_menu   ">
+                        <h3 class="widget_title">Services</h3>
+                        <div class="menu-all-pages-container">
+                            <ul class="menu">
+                                @isset($services)
+                                    @foreach ($services as $service)
+                                        <li><a href="#">{{ $service->title }}</a></li>
+                                    @endforeach
+                                @endisset
+
+                            </ul>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6 col-lg-3 col-xl-3">
                     <div class="widget footer-widget   ">
                         <h3 class="widget_title">Visiting Hours</h3>
                         <div class="footer-table">
                             <table>
                                 <tr>
-                                    <td>Mon - Fri:</td>
-                                    <td>8:00 am - 8:00 pm</td>
+                                    <td>
+                                        @isset($about->opening_time)
+                                            {!! $about->opening_time !!}
+                                        @endisset
+                                    </td>
+
                                 </tr>
-                                <tr>
-                                    <td>Saturday:</td>
-                                    <td>9:00 am - 6:00 pm</td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday:</td>
-                                    <td>9:00 am - 6:00 pm</td>
-                                </tr>
+
                             </table>
                         </div>
                         <div class="address-line">
                             <i class="far fa-map-marker-alt text-theme fs-md"></i>
-                            <a href="#" class="text-reset fs-md">374 William S Canning Blvd, Fall River MA
-                                2721</a>
+                            <a href="#" class="text-reset fs-md">
+                                @isset($about->address)
+                                    {{ $about->address }}
+                                @endisset
+
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -142,33 +136,33 @@
 <a href="#" class="scrollToTop scroll-bottom  style2"><i class="fas fa-arrow-alt-up"></i></a>
 <!--==============================       All Js File   ============================== -->
 <!-- Jquery -->
-<script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
+<script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
 <!-- Slick Slider -->
-<script src="{{asset('assets/js/slick.min.js')}}"></script>
+<script src="{{ asset('assets/js/slick.min.js') }}"></script>
 <!-- <script src="assets/js/app.min.js"></script> -->
 <!-- Layerslider -->
-<script src="{{asset('assets/js/layerslider.utils.js')}}"></script>
-<script src="{{asset('assets/js/layerslider.transitions.js')}}"></script>
-<script src="{{asset('assets/js/layerslider.kreaturamedia.jquery.js')}}"></script>
+<script src="{{ asset('assets/js/layerslider.utils.js') }}"></script>
+<script src="{{ asset('assets/js/layerslider.transitions.js') }}"></script>
+<script src="{{ asset('assets/js/layerslider.kreaturamedia.jquery.js') }}"></script>
 <!-- Bootstrap -->
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <!-- jQuery Datepicker -->
-<script src="{{asset('assets/js/jquery.datetimepicker.min.js')}}"></script>
+<script src="{{ asset('assets/js/jquery.datetimepicker.min.js') }}"></script>
 <!-- Magnific Popup -->
-<script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 <!-- Isotope Filter -->
-<script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
-<script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
+<script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
 <!-- Parallax Scroll -->
-<script src="{{asset('assets/js/universal-parallax.min.js')}}"></script>
+<script src="{{ asset('assets/js/universal-parallax.min.js') }}"></script>
 <!-- WOW Animation -->
-<script src="{{asset('assets/js/wow.min.js')}}"></script>
+<script src="{{ asset('assets/js/wow.min.js') }}"></script>
 <!-- Custom Carousel -->
-<script src="{{asset('assets/js/vscustom-carousel.min.js')}}"></script>
+<script src="{{ asset('assets/js/vscustom-carousel.min.js') }}"></script>
 <!-- Form Js -->
-<script src="{{asset('assets/js/ajax-mail.js')}}"></script>
+<script src="{{ asset('assets/js/ajax-mail.js') }}"></script>
 <!-- Main Js File -->
-<script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 
 </body>
 

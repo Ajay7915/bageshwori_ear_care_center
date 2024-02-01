@@ -67,7 +67,7 @@
         <div class="vs-menu-area text-center">
             <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
-                <a href="{{ route('home') }}"><img src="assets/img/logo-mobile.svg" alt="Medixi"></a>
+                <a href="{{ route('home') }}"><img src="documents/logo/{{$about->logo}}" alt="Medixi"></a>
             </div>
             <form action="#" class="mobile-menu-form">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -88,6 +88,10 @@
                     <li class="menu-item-has-children">
                         <a href="{{ route('program') }}">Program</a>
                     </li>
+
+                    <li class="menu-item-has-children">
+                        <a href="{{ route('program') }}">Gallery</a>
+                    </li>
                     
                     <li class="menu-item-has-children">
                         <a href="{{ route('notice') }}">Notice</a>
@@ -107,7 +111,7 @@
             <div class="widget footer-widget  ">
                 <div class="vs-widget-about">
                     <div class="footer-logo">
-                        <img src="assets/img/logo.svg" alt="logo">
+                        <img src="documents/logo/{{$about->logo}}" alt="logo">
                     </div>
                     <p class="footer-text1">Lorem ipsum dolor sit amet, consectet eiusmod tempor incididunt ut labore e
                         rem ipsum dolor sit amet. sum dolor sit amet, consectet eiusmod.</p>
@@ -225,7 +229,7 @@
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto">
                                 <div class="header1-logo py-2">
-                                    <a href="{{ route('home') }}"><img src="assets/img/logo.svg" alt="Logo"></a>
+                                    <a href="{{ route('home') }}"><img src="documents/logo/{{$about->logo}}" alt="Logo"></a>
                                 </div>
                             </div>
                             <div class="col text-end text-lg-center">
@@ -242,6 +246,9 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('program') }}">Programs</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('gallery') }}">Gallery</a>
                                         </li>
                                         <li class="mega-menu-wrap">
                                             <a href="{{ route('notice') }}"><span class="has-new-label">Notice <span

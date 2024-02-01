@@ -19,40 +19,40 @@
         </div>
     </div>
     <!--==============================
-                Blog Area
-            ==============================-->
+                            Blog Area
+                        ==============================-->
     <section class="vs-blog-wrapper space-top space-md-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
 
-                    @foreach ($programs as $program)
-                        <div class="vs-blog blog-single">
-                            <div class="blog-img">
-                                <a href="blog-details.html"><img src="documents/programs/{{ $program->image }}"
-                                        alt="Blog Image"></a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <a href="#"><i class="fal fa-eye"></i>Posted date: {{ $program->created_at }}</a>
+                    @isset($programs)
+                        @foreach ($programs as $program)
+                            <div class="vs-blog blog-single">
+                                <div class="blog-img">
+                                    <a href="blog-details.html"><img src="documents/programs/{{ $program->image }}"
+                                            alt="Blog Image"></a>
                                 </div>
-                                <h2 class="blog-title h3"><a href="blog-details.html">{{ $program->title }}</a></h2>
-                                <p>{!! $program->description !!}</p>
-                                <a href="" class="link-btn">Read More<i class="fal fa-long-arrow-right"></i></a>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <a href="#"><i class="fal fa-eye"></i>Posted date: {{ $program->created_at }}</a>
+                                    </div>
+                                    <h2 class="blog-title h3"><a href="blog-details.html">{{ $program->title }}</a></h2>
+                                    <p>{!! $program->description !!}</p>
+                                    <a href="" class="link-btn">Read More<i class="fal fa-long-arrow-right"></i></a>
+                                </div>
                             </div>
+                        @endforeach
+                        <div class="vs-pagination pb-30">
+                            <ul>
+                                <li>{{ $programs->links('frontend/css/custom-pagination') }}</li>
+                            </ul>
                         </div>
-                    @endforeach
-
-                    
-                    <div class="vs-pagination pb-30">
-                        <ul>
-                            <li>{{ $programs->links('frontend/css/custom-pagination') }}</li>
-                        </ul>
-                    </div>
+                    @endisset
                 </div>
 
                 <div class="col-lg-4">
-                    <aside class="sidebar-area pl-30">                        
+                    <aside class="sidebar-area pl-30">
                         <div class="widget  ">
                             <h3 class="widget_title">Recent Notice</h3>
                             <div class="recent-post-wrap">
@@ -99,7 +99,7 @@
 
                             </div>
                         </div>
-                        
+
                     </aside>
                 </div>
             </div>

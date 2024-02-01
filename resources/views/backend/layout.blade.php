@@ -187,6 +187,22 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
+                            <a href="{{route('admin_gallery.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-images"></i>
+                                <p>
+                                    Gallery
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{route('admin_about.edit',1)}}" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    About Hospital
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
@@ -248,7 +264,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+    @yield('footer')
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->

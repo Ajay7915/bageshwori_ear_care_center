@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Carousel;
+use App\Models\Gallery;
 use App\Models\Notice;
 use Illuminate\Support\Facades\Response;
 use App\Models\Program;
@@ -18,32 +20,43 @@ class FrontendController extends Controller
      */
     public function home()
     {
+        $about = About::find(1);
         $services = Service::latest()->get();
         $programs = Program::latest()->limit(4)->get();
         $carousel = Carousel::where('id',1)->first();
-        return view('frontend.home',compact('carousel','services','programs'));
+        return view('frontend.home',compact('carousel','services','programs','about'));
     }
 
     public function about()
     {
-        return view('frontend.about');
+        $about = About::find(1);
+        $services = Service::latest()->get();
+        $programs = Program::paginate(6);
+        return view('frontend.about',compact('about','services','programs'));
     }
     public function service()
     {
+        $about = About::find(1);
         $services = Service::paginate(5);
+        $programs = Program::paginate(6);
         $carousel = Carousel::where('id',1)->first();
-        return view('frontend.service',compact('services','carousel'));
+        return view('frontend.service',compact('services','carousel','about','programs'));
     }
     public function program()
     {
         $programs = Program::paginate(5);
-        return view("frontend.program", ['programs'=>$programs]);
+        $about = About::find(1);
+        $services = Service::latest()->get();
+        return view("frontend.program", compact('programs','about','services'));
     }
 
     public function notice()
     {
+        $about = About::find(1);
+        $services = Service::latest()->get();
+        $programs = Program::paginate(6);
         $notices = Notice::orderBy('created_at','desc')->get();
-        return view('frontend.notice',compact('notices'));
+        return view('frontend.notice',compact('notices','about','services','programs'));
     }
     public function notice_show($id) {
         $filename = Notice::find($id)->document;
@@ -61,7 +74,19 @@ class FrontendController extends Controller
     }
     public function contact()
     {
-        return view('frontend.contact');
+        $services = Service::latest()->get();
+        $about = About::find(1);
+        $programs = Program::paginate(6);
+        return view('frontend.contact',compact('about','services','programs'));
+    }
+    
+    public function gallery()
+    {
+        $programs = Program::paginate(6);
+        $about = About::find(1);
+        $services = Service::latest()->get();
+        $data = Gallery::latest()->get();
+        return view("frontend.gallery", compact('programs','about','services','data'));
     }
     
 }

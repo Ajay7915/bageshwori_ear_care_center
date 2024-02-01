@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
@@ -28,6 +30,7 @@ Route::get('/service', [FrontendController::class, 'service'])->name('service');
 Route::get('/program', [FrontendController::class, 'program'])->name('program');
 Route::get('/notice', [FrontendController::class, 'notice'])->name('notice');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');
 Route::get('/notice_show/{id}',[FrontendController::class,'notice_show'])->name('notice_show');
 Route::post('/contactstore', [ContactController::class,'store'])->name('contactstore');
 // Admin interface
@@ -46,6 +49,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('admin_service', ServiceController::class);
     Route::resource('admin_carousel', CarouselController::class);
     Route::resource('admin_contact', ContactController::class);
+    Route::resource('admin_about', AboutController::class);
+    Route::resource('admin_gallery',GalleryController::class);
 });
 
 

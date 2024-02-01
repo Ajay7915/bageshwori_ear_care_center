@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Carousel;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class AboutController extends Controller
 {
@@ -14,7 +16,6 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +25,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.about.create');
     }
 
     /**
@@ -35,7 +36,27 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'address' => 'required',
+            'phone' => 'required',
+            'opening_time' => 'required',
+            'description' => 'required',
+        ]);
+        $crud = new About();
+        if ($request->hasFile('logo')) {
+            $image = $request->file('logo');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(205, 63)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/logo/{$newfilename}"));
+            $crud->logo = $newfilename;
+        }
+        $crud->address = $request->address;
+        $crud->contact_no = $request->phone;
+        $crud->opening_time = $request->opening_time;
+        $crud->description = $request->description;
+        $crud->video_link = $request->video_link;
+        $crud->save();
+        return redirect()->route('dashboard')->with('success', 'Updated successfully');
     }
 
     /**
@@ -55,9 +76,10 @@ class AboutController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit(About $about, $id)
     {
-        //
+        $about = About::find($id);
+        return view('backend/about/index', compact('about'));
     }
 
     /**
@@ -67,9 +89,29 @@ class AboutController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, About $about, $id)
     {
-        //
+        $request->validate([
+            'address' => 'required',
+            'phone' => 'required',
+            'opening_time' => 'required',
+            'description' => 'required',
+        ]);
+        $crud = About::find($id);
+        if ($request->hasFile('logo')) {
+            $image = $request->file('logo');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(250, 100)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/logo/{$newfilename}"));
+            $crud->logo = $newfilename;
+        }
+        $crud->address = $request->address;
+        $crud->contact_no = $request->phone;
+        $crud->opening_time = $request->opening_time;
+        $crud->description = $request->description;
+        $crud->video_link = $request->video_link;
+        $crud->save();
+        return redirect()->back()->with('success', 'Updated successfully');
     }
 
     /**
