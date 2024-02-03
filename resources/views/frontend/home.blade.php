@@ -149,7 +149,9 @@
                     <div class="vs-surface wow" data-wow-delay="0.3s">
                         <div class="about-img3 position-relative">
                             <img src="assets/img/about/about-4-1.jpg" alt="About Image" class="w-100">
-                            <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
+                            @isset($about)
+                            <a href="{{$about->video_link}}"
+                            @endisset
                                 class="popup-video play-btn style2 position-center"><i class="fas fa-play"></i></a>
                             <div class="exp-box-bottom bg-white">
                                 <div class="exp-year text-theme">

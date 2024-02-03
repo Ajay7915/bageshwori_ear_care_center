@@ -28,6 +28,8 @@ Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/service', [FrontendController::class, 'service'])->name('service');
 Route::get('/program', [FrontendController::class, 'program'])->name('program');
+Route::get('/programDetails/{id}', [FrontendController::class, 'programDetails'])->name('programDetails');
+Route::get('/serviceDetails/{id}', [FrontendController::class, 'serviceDetails'])->name('serviceDetails');
 Route::get('/notice', [FrontendController::class, 'notice'])->name('notice');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('/gallery', [FrontendController::class, 'gallery'])->name('gallery');

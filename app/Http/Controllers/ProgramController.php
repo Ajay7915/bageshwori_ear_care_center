@@ -68,7 +68,6 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        //
     }
 
     /**

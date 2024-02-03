@@ -26,7 +26,7 @@ class CarouselController extends Controller
      */
     public function create()
     {
-        
+        return view('backend.carousel.create');
     }
 
     /**
@@ -37,7 +37,58 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $crud = new Carousel();
+        if ($request->hasFile('home_carousel')) {
+            $image = $request->file('home_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 800)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->home = $newfilename;
+        }
+        if ($request->hasFile('about_carousel')) {
+            $image = $request->file('about_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 450)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->about = $newfilename;
+        }
+        if ($request->hasFile('gallery_carousel')) {
+            $image = $request->file('gallery_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 450)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->gallery = $newfilename;
+        }
+        if ($request->hasFile('service_carousel')) {
+            $image = $request->file('service_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 450)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->service = $newfilename;
+        }
+        if ($request->hasFile('notice_carousel')) {
+            $image = $request->file('notice_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 450)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->notice = $newfilename;
+        }
+        if ($request->hasFile('contact_carousel')) {
+            $image = $request->file('contact_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 450)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->contact = $newfilename;
+        }
+        if ($request->hasFile('program_carousel')) {
+            $image = $request->file('program_carousel');
+            $newfilename = time() . "." . $image->getClientOriginalExtension();
+            $resizedImage = Image::make($image)->resize(1920, 450)->encode('jpg', 80);
+            $resizedImage->save(public_path("documents/carousels/{$newfilename}"));
+            $crud->program = $newfilename;
+        }
+        $crud->save();
+        return redirect()->back()->with('success','Uploaded successfully');
     }
 
     /**

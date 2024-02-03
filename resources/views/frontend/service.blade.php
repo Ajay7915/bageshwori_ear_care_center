@@ -22,25 +22,29 @@
     <section class="vs-service-wrapper space-top space-md-bottom">
         <div class="container">
             <div class="row">
-                @foreach ($services as $service)
-                    <div class="col-md-6 col-xl-4">
-                        <div class="service-thumb">
-                            <div class="sr-img">
-                                <img class="w-100" src="documents/services/{{$service->image}}" alt="Serivce Image">
-                            </div>
-                            <div class="sr-body">
-                                <span class="sr-icon"><i class="flaticon-discuss fa-3x"></i></span>
-                                <h3 class="h4 sr-title "><a class="text-reset" href="service-details.html">{{$service->title}}</a>
-                                </h3>
-                                <div class="sr-content">
-                                    <p class="sr-text">{!! Str::limit($service->description,70) !!} </p>
-                                    <a href="service-details.html" class="link-btn">Read More<i
-                                            class="fal fa-long-arrow-right"></i></a>
+                @isset($services)
+
+                    @foreach ($services as $service)
+                        <div class="col-md-6 col-xl-4">
+                            <div class="service-thumb">
+                                <div class="sr-img">
+                                    <img class="w-100" src="documents/services/{{ $service->image }}" alt="Serivce Image">
+                                </div>
+                                <div class="sr-body">
+                                    <span class="sr-icon"><i class="flaticon-discuss fa-3x"></i></span>
+                                    <h3 class="h4 sr-title "><a class="text-reset"
+                                            href="{{route('serviceDetails',$service->id)}}">{{ Str::limit($service->title,50) }}</a>
+                                    </h3>
+                                    <div class="sr-content">
+                                        <p class="sr-text">{!! Str::limit($service->description, 70) !!} </p>
+                                        <a href="service-details.html" class="link-btn">Read More<i
+                                                class="fal fa-long-arrow-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endisset
 
             </div>
         </div>
@@ -105,7 +109,7 @@
         </div>
     </section>
     <!--==============================       Team Area        ==============================-->
-    <section class="vs-team-wrapper space-top space-md-bottom">
+    {{-- <section class="vs-team-wrapper space-top space-md-bottom">
         <div class="container">
             <div class="row  text-center justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -235,5 +239,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

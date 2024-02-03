@@ -40,7 +40,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Update Hospital Details</h3>
                                 @if (!isset($about))
-                                    <a href="{{ route('admin_about.create') }}" class="btn btn-primary float-right"> <i
+                                    <a href="{{ route('admin_about.create') }}" class="btn btn-danger float-right"> <i
                                             class="fa fa-plus"></i> Add Hospital Detail</a>
                                 @endif
                             </div>

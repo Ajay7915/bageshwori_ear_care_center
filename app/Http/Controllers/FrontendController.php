@@ -46,8 +46,26 @@ class FrontendController extends Controller
     {
         $programs = Program::paginate(5);
         $about = About::find(1);
+        $notices = Notice::paginate(5);
         $services = Service::latest()->get();
-        return view("frontend.program", compact('programs','about','services'));
+        return view("frontend.program", compact('programs','about','services','notices'));
+    }
+
+    public function programDetails($id) {
+        $about = About::find(1);
+        $services = Service::paginate(5);
+        $program = Program::find($id);
+        $programs = Program::paginate(6);
+        $carousel = Carousel::where('id',1)->first();
+        return view('frontend.programDetails',compact('services','carousel','about','program','programs'));
+    }
+    public function serviceDetails($id) {
+        $about = About::find(1);
+        $services = Service::paginate(5);
+        $programs = Program::paginate(6);
+        $serviceDetails = Service::find($id);
+        $carousel = Carousel::where('id',1)->first();
+        return view('frontend.serviceDetails',compact('services','carousel','about','programs','serviceDetails'));
     }
 
     public function notice()

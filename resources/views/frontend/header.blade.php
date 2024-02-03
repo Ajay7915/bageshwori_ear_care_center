@@ -68,7 +68,7 @@
             <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
                 @isset($about->logo)
-                    <a href="{{ route('home') }}"><img src="documents/logo/{{ $about->logo }}" alt="Medixi"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('/documents/logo/' . $about->logo) }}" alt="Medixi"></a>
                 @endisset
             </div>
             <form action="#" class="mobile-menu-form">
@@ -114,7 +114,7 @@
                 <div class="vs-widget-about">
                     <div class="footer-logo">
                         @isset($about->logo)
-                            <img src="documents/logo/{{ $about->logo }}" alt="logo">
+                            <img src="{{ asset('/documents/logo/' . $about->logo) }}" alt="logo">
                         @endisset
                     </div>
                     <p class="footer-text1">Lorem ipsum dolor sit amet, consectet eiusmod tempor incididunt ut labore e
@@ -234,7 +234,7 @@
                             <div class="col-auto">
                                 <div class="header1-logo py-2">
                                     @isset($about->logo)
-                                        <a href="{{ route('home') }}"><img src="documents/logo/{{ $about->logo }}"
+                                        <a href="{{ route('home') }}"><img src="{{ asset('/documents/logo/' . $about->logo) }}"
                                                 alt="Logo"></a>
                                     @endisset
                                 </div>
@@ -297,6 +297,5 @@
     @yield('content')
     {{-- Content part end --}}
 
-
-    @include('frontend.footer')
     @yield('footer')
+    @include('frontend.footer')

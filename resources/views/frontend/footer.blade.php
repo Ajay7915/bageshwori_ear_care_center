@@ -5,7 +5,9 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-sm-6 col-md-auto text-center text-sm-start">
                     <div class="footer1-logo bg-white">
-                        <a href="index.html"><img src="assets/img/logo.svg" alt="Logo"></a>
+                        @isset($about->logo)
+                            <a href="{{ route('home') }}"><img src="documents/logo/{{ $about->logo }}" alt="Logo"></a>
+                        @endisset
                     </div>
                 </div>
                 <div class=" col-sm-6 col-md-auto pt-20 pt-sm-0 pb-20 pb-sm-0 text-center text-sm-end">
@@ -73,7 +75,7 @@
                             <ul class="menu">
                                 @isset($services)
                                     @foreach ($services as $service)
-                                        <li><a href="#">{{ $service->title }}</a></li>
+                                        <li><a href="#">{{ Str::limit($service->title,20) }}</a></li>
                                     @endforeach
                                 @endisset
 

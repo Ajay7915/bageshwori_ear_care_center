@@ -44,9 +44,9 @@
                                     <thead>
                                         <tr>
                                             <th>S.N</th>
-                                            <th>Published Date</th>
-                                            <th>Document</th>
-                                            <th>Description</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -55,28 +55,12 @@
                                         @foreach ($contacts as $list)
                                             <tr>
                                                 <td>{{ $i++ }}</td>
-                                                <td class="badge badge-danger m-2 p-3">{{ $list->published_date }}</td>
+                                                <td>{{$list->name}}</td>
+                                                <td class="text-info">{{ $list->email}}</td>
+                                                <td>{!! $list->message !!}</td>
                                                 <td>
-                                                    @isset($list->document)
-                                                        <a href="{{route('admin_notice.show',$list->id)}}" target="_blank"><img src="/documents/logo/document_logo.png" height="40"
-                                                            width="40" alt=""></a>
-                                                    @endisset
-                                                </td>
-                                                <td>{!! $list->description !!}</td>
-                                                <td>
-                                                    <form action="{{ route('admin_notice.destroy', $list->id) }}"
-                                                        method="POST" enctype="multipart/form-data">
-
-                                                        <a class="btn btn-info" target="_blank"
-                                                            href="{{ route('admin_notice.show', $list->id) }}"><i
-                                                                style='font-size:15px' id="view"
-                                                                class='fas'>&#xf06e;</i></a>
-
-                                                        <a class="btn btn-primary"
-                                                            href="{{ route('admin_notice.edit', $list->id) }}"><i
-                                                                style='font-size:15px' id="edit"
-                                                                class='fas'>&#xf044;</i></a>
-
+                                                    <form action="{{ route('admin_contact.destroy', $list->id) }}"
+                                                        method="POST" enctype="multipart/form-data">   
                                                         @csrf
                                                         @method('DELETE')
 
